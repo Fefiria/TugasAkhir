@@ -4,6 +4,8 @@
 
 let currentEditId = null;
 let deleteProductId = null;
+const DEFAULT_IMAGE = '/assets/default-marshmallow.jpg';
+
 
 // DOM Elements
 const productsTableBody = document.getElementById('productsTableBody');
@@ -53,14 +55,13 @@ function setupEventListeners() {
 function renderProducts(searchTerm = '') {
   const products = getProducts();
   const filteredProducts = products.filter(p =>
-    p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    p.category.toLowerCase().includes(searchTerm.toLowerCase())
+    p.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   if (filteredProducts.length === 0) {
     productsTableBody.innerHTML = `
       <tr>
-        <td colspan="6">
+        <td colspan="5">
           <div class="empty-state">
             <div class="empty-state-icon">📦</div>
             <h3 class="empty-state-title">
@@ -81,17 +82,14 @@ function renderProducts(searchTerm = '') {
     <tr>
       <td class="product-image-cell">
         <img 
-          src="${product.image || 'https://via.placeholder.com/60'}" 
-          alt="${product.name}"
-          class="product-thumbnail"
-          onerror="this.src='https://via.placeholder.com/60?text=No+Image'"
+        src="${product.image || DEFAULT_IMAGE}"
+        alt="${product.name}"
+        class="product-thumbnail"
+        onerror="this.onerror=null; this.src='${DEFAULT_IMAGE}'"
         >
       </td>
       <td>
         <div class="product-name">${product.name}</div>
-      </td>
-      <td>
-        <span class="category-badge">${getCategoryLabel(product.category)}</span>
       </td>
       <td>
         <span class="product-price">${formatCurrency(product.price)}</span>
@@ -152,7 +150,6 @@ function openEditModal(productId) {
   document.getElementById('modalTitle').textContent = 'Edit Produk';
   document.getElementById('productId').value = product.id;
   document.getElementById('productName').value = product.name;
-  document.getElementById('productCategory').value = product.category;
   document.getElementById('productPrice').value = product.price;
   document.getElementById('productStock').value = product.stock;
   document.getElementById('productDescription').value = product.description;
@@ -188,7 +185,6 @@ async function handleFormSubmit(e) {
 
   const productData = {
     name: document.getElementById('productName').value.trim(),
-    category: document.getElementById('productCategory').value,
     price: parseFloat(document.getElementById('productPrice').value),
     stock: parseInt(document.getElementById('productStock').value),
     description: document.getElementById('productDescription').value.trim(),
@@ -226,18 +222,6 @@ function handleDelete() {
 function handleSearch(e) {
   const searchTerm = e.target.value;
   renderProducts(searchTerm);
-}
-
-// Utility Functions
-function getCategoryLabel(category) {
-  const labels = {
-    'makanan': 'Makanan & Minuman',
-    'fashion': 'Fashion',
-    'aksesori': 'Aksesori',
-    'dekorasi': 'Dekorasi & Kerajinan',
-    'lainnya': 'Lainnya'
-  };
-  return labels[category] || category;
 }
 
 function showNotification(message, type = 'info') {

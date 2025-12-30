@@ -42,25 +42,6 @@
             <input type="text" id="searchInput" class="search-input-user" placeholder="🔍 Cari produk marshmallow...">
         </div>
 
-        <!--Category Filter -->
-        <div class="category-filter fade-in">
-            <button class="category-btn active" data-category="all">
-                🌟 Semua Produk
-            </button>
-            <button class="category-btn" data-category="makanan">
-                🍔 Makanan & Minuman
-            </button>
-            <button class="category-btn" data-category="fashion">
-                👕 Fashion
-            </button>
-            <button class="category-btn" data-category="aksesori">
-                💍 Aksesori
-            </button>
-            <button class="category-btn" data-category="dekorasi">
-                🎨 Dekorasi
-            </button>
-        </div>
-
         <!-- Products Grid -->
         <div class="products-grid" id="productsGrid">
             <!-- Products will be inserted here -->
@@ -112,9 +93,7 @@
                                 style="font-size: var(--font-size-xs); color: var(--text-tertiary); margin-bottom: var(--spacing-xs);">
                                 Harga
                             </div>
-                            <div style="font-size: var(--font-size-3xl); font-weight: 800; background: var(--success-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"
-                                id="modalProductPrice">
-                            </div>
+                            <div id="modalProductPrice" class="modal-product-price-gradient"></div>
                         </div>
                         <div style="margin-bottom: var(--spacing-md);">
                             <div
@@ -161,9 +140,7 @@
                         style="font-size: var(--font-size-sm); color: var(--text-tertiary); margin-bottom: var(--spacing-xs);">
                         Total Pembayaran
                     </div>
-                    <div style="font-size: var(--font-size-2xl); font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"
-                        id="checkoutTotal">
-                    </div>
+                    <div id="checkoutTotal" class="checkout-total-amount-gradient"></div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -174,8 +151,8 @@
         </div>
     </div>
 
-    <script src="js/data.js"></script>
-    <script src="js/user.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/user.js"></script>
 </body>
 
 </html>

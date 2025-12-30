@@ -1,23 +1,30 @@
-// ===================================
-// User/Customer Page Logic
-// ===================================
 
 let currentCategory = 'all';
 let selectedProductId = null;
 let searchQuery = '';
 
-// DOM Elements
-const productsGrid = document.getElementById('productsGrid');
-const cartSidebar = document.getElementById('cartSidebar');
-const cartBackdrop = document.getElementById('cartBackdrop');
-const cartItems = document.getElementById('cartItems');
-const cartBadge = document.getElementById('cartBadge');
-const cartTotal = document.getElementById('cartTotal');
-const productModal = document.getElementById('productModal');
-const checkoutModal = document.getElementById('checkoutModal');
+// DOM Elements (assigned on DOMContentLoaded to avoid null refs)
+let productsGrid;
+let cartSidebar;
+let cartBackdrop;
+let cartItems;
+let cartBadge;
+let cartTotal;
+let productModal;
+let checkoutModal;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+  // Assign DOM elements after DOM is ready
+  productsGrid = document.getElementById('productsGrid');
+  cartSidebar = document.getElementById('cartSidebar');
+  cartBackdrop = document.getElementById('cartBackdrop');
+  cartItems = document.getElementById('cartItems');
+  cartBadge = document.getElementById('cartBadge');
+  cartTotal = document.getElementById('cartTotal');
+  productModal = document.getElementById('productModal');
+  checkoutModal = document.getElementById('checkoutModal');
+
   renderProducts();
   updateCartUI();
   setupEventListeners();

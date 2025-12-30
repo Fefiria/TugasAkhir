@@ -454,6 +454,29 @@
     font-size: var(--font-size-2xl);
 }
 
+
+.checkout-total-amount-gradient {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+}
+
+.modal-product-price-gradient {
+    font-size: var(--font-size-3xl);
+    font-weight: 800;
+    background: var(--success-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+}
+
 .cart-empty {
     text-align: center;
     padding: var(--spacing-2xl) var(--spacing-md);
